@@ -1,0 +1,158 @@
+{
+  "consumer": {
+    "name": "cme-ui"
+  },
+  "provider": {
+    "name": "metadata-service"
+  },
+  "interactions": [
+    {
+      "description": "a request to GET projects",
+      "providerState": "provider has some existing projects",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/metadata-service/projects",
+        "headers": {
+          "authorization": "Bearer <CONSORT-IT>AWS_COGNITO_TOKEN<CONSORT-IT>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": [
+          {
+            "id": "ID",
+            "name": "project-name",
+            "team": [
+
+            ],
+            "phases": [
+              {
+                "name": "a phase",
+                "services": [
+                  {
+                    "name": "a service",
+                    "description": "a description",
+                    "icon": "icon",
+                    "serviceType": "UI",
+                    "url": "localhost"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request to GET projects",
+      "providerState": "provider has no existing project",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/metadata-service/projects",
+        "headers": {
+          "authorization": "Bearer <CONSORT-IT>AWS_COGNITO_TOKEN<CONSORT-IT>"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": [
+
+        ]
+      }
+    },
+    {
+      "description": "a request to PUT project with id ID",
+      "providerState": "provider has an existing project with id ID",
+      "request": {
+        "method": "PUT",
+        "path": "/api/v1/metadata-service/projects/1",
+        "headers": {
+          "authorization": "Bearer <CONSORT-IT>AWS_COGNITO_TOKEN<CONSORT-IT>"
+        },
+        "body": {
+          "id": "ID",
+          "name": "project-name",
+          "team": [
+            {
+              "name": "Markus",
+              "roles": [
+                "Dev",
+                "Ressource"
+              ],
+              "email": "me@mail.de"
+            }
+          ],
+          "phases": [
+            {
+              "name": "a phase",
+              "services": [
+                {
+                  "name": "a service",
+                  "description": "a description",
+                  "icon": "icon",
+                  "serviceType": "UI",
+                  "url": "localhost"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "id": "ID",
+          "name": "project-name",
+          "team": [
+            {
+              "name": "Markus",
+              "roles": [
+                "Dev",
+                "Ressource"
+              ],
+              "email": "me@mail.de"
+            }
+          ],
+          "phases": [
+            {
+              "name": "a phase",
+              "services": [
+                {
+                  "name": "a service",
+                  "description": "a description",
+                  "icon": "icon",
+                  "serviceType": "UI",
+                  "url": "localhost"
+                }
+              ]
+            }
+          ]
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

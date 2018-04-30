@@ -1,0 +1,10 @@
+.idea/
+/target/
+/testresult/
+*.iml
+.env
+*.jar
+*.log
+dependency-check-*
+version.properties
+version.yaml
