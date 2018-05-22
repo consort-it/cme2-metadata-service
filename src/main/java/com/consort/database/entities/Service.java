@@ -34,7 +34,7 @@ public class Service {
         this.description = description;
     }
 
-    public String getIcon() {
+    public String getIcon()  {
         return icon;
     }
 

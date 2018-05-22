@@ -78,7 +78,7 @@ public class AuthorizationFilter extends SecurityFilter {
 
     @Override
     public void handle(Request request, Response response) {
-        if (!request.requestMethod().equals("OPTIONS") && !"1".equals(request.queryParams("nosec"))) {
+        if (!request.requestMethod().equals("OPTIONS") && !"1".equals(request.queryParams("nosec")) || "false".equals(EnvironmentContext.getInstance().getenv("nosecEnabled"))) {
             super.handle(request, response);
         }
     }
